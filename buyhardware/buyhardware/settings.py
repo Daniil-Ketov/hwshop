@@ -15,6 +15,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+MEDIA_ROOT = f'{BASE_DIR}/media'
+
+MEDIA_URL = '/media/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -26,6 +29,10 @@ SECRET_KEY = 'django-insecure-58&--0agjp_tupo%zf#jqz&2u2gntmduxtn9-_!d3_(u3f3@^_
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]
 
 DEFAULT_USER_MODEL = "authentication.User"
 
@@ -41,11 +48,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authentication',
+    'hardware',
+    'corsheaders',
     'rest_framework',
     'knox',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
