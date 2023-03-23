@@ -27,7 +27,7 @@ const Navbar = () => {
         <input
           className="bg-transparent p-2 focus:outline-none w-full"
           type="text"
-          placeholder="Найти оборудование"
+          placeholder="Поиск"
         />
       </div>
       {/* Cart button */}
